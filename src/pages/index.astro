@@ -1,0 +1,168 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Header from "../components/Header.astro";
+let title = "Astro 🔥 Testing";
+---
+
+<!-- <Header /> -->
+<Layout title={title + "."}>
+	<div class="col-12 d-flex flex-column">
+		<section
+			class="p-3 pb-4 d-flex flex-column bg-brand main_banner px-md-5"
+		>
+			<div class="d-none d-md-flex flex-column text-center gap-3 my-5">
+				<!-- <div
+					class="intro-text-animation-block"
+					style="--anim-delay: 0s"
+				>
+					<h2
+						class="fw-bold text-black mb-0"
+						style="font-size: 3vw;"
+					>
+						Desafiá a tus amigos con la nueva penca de
+					</h2>
+				</div> -->
+				<div
+					class="intro-text-animation-block"
+					style="--anim-delay: .1s; max-height: 8vw !important;"
+				>
+					<h1 class="m-0 fw-bold text-white" style="font-size: 7vw;">
+						{title}
+					</h1>
+				</div>
+			</div>
+		</section>
+		<section
+			id="overlay-container"
+			class="d-flex flex-column px-md-5 py-3 py-md-5 pb-3 pb-md-3"
+		>
+			<article class="p-3 pb-0 px-md-5">
+				<h6 class="fw-bold m-0 art-title">Torneos Activos</h6>
+				<ul class="link-card-grid px-0">
+					<Card
+						href="https://docs.astro.build/"
+						title="Documentation"
+						body="Learn how Astro works and explore the official API docs."
+						extra="Yey!!!"
+					/>
+				</ul>
+			</article>
+			<article class="p-3 pb-0 px-md-5">
+				<h6 class="fw-bold m-0 art-title">Próximos Torneos</h6>
+				<ul class="link-card-grid px-0">
+					<Card
+						href="https://docs.astro.build/"
+						title="Documentation"
+						body="Learn how Astro works and explore the official API docs."
+						extra="Yey!!!"
+					/>
+					<Card
+						href="https://docs.astro.build/"
+						title="Documentation"
+						body="Learn how Astro works and explore the official API docs."
+						extra="Yey!!!"
+					/>
+					<Card
+						href="https://docs.astro.build/"
+						title="Documentation"
+						body="Learn how Astro works and explore the official API docs."
+						extra="Yey!!!"
+					/>
+				</ul>
+			</article>
+		</section>
+		<!-- <main>
+		<h1>Welcome to <span class="text-gradient">{nig}</span></h1>
+		<p class="instructions">
+			To get started, open the directory <code>src/pages</code> in your project.<br />
+			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
+		</p>
+		<ul role="list" class="link-card-grid">
+			<Card
+				href="https://docs.astro.build/"
+				title="Documentation"
+				body="Learn how Astro works and explore the official API docs."
+				extra='Yey!!!'
+			/>
+			<Card
+				href="https://astro.build/integrations/"
+				title="Integrations"
+				body="Supercharge your project with new frameworks and libraries."
+			/>
+			<Card
+				href="https://astro.build/themes/"
+				title="Themes"
+				body="Explore a galaxy of community-built starter themes."
+			/>
+			<Card
+				href="https://astro.build/chat/"
+				title="Community"
+				body="Come say hi to our amazing Discord community. ❤️"
+			/>
+		</ul>
+	</main> -->
+	</div>
+
+	<style>
+		
+		:host {
+			overflow-y: auto;
+		}
+
+		.main_banner {
+			position: relative;
+			z-index: 1;
+		}
+		h4,
+		p,
+		h1 {
+			z-index: 2;
+		}
+
+		#main_banner_player {
+			width: clamp(70px, 20vw, 200px);
+			height: auto;
+			position: absolute;
+			right: 0;
+			z-index: 1;
+			filter: drop-shadow(10px 0px 15px rgba(255, 255, 255, 0.491));
+		}
+
+		#overlay-container {
+			margin-top: -20px;
+			box-shadow: 0px -20px 25px -20px rgba(0, 0, 0, 0.5);
+			z-index: 2;
+			border-radius: 24px 24px 0 0;
+			background-color: var(--as-white);
+		}
+
+		.arrow-header {
+			vertical-align: text-bottom;
+		}
+
+		.art-title {
+			font-size: clamp(20px, 4vw, 50px);
+		}
+
+		.intro-text-animation .intro-text-animation-block {
+			max-height: 60px;
+			height: auto;
+			overflow: hidden;
+		}
+		.intro-text-animation-block h1,
+		.intro-text-animation-block h4,
+		.intro-text-animation-block p,
+		.intro-text-animation-block h2 {
+			transform: translateY(15vw);
+			animation: intro-text-anim 0.5s ease 1 forwards;
+			animation-delay: var(--anim-delay);
+		}
+
+		@media (prefers-color-scheme: dark) {
+			#overlay-container {
+				background-color: var(--dark-color);
+			}
+		}
+	</style>
+</Layout>

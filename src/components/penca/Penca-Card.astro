@@ -1,0 +1,191 @@
+---
+export interface EventP {
+    event: EventProps;
+}
+interface EventProps {
+    date: string;
+    location: string;
+    el: unknown;
+    ev: EventTeam;
+    isOpen: boolean;
+    status: "PENDIENTE" | "EN CURSO" | "FINALIZADO";
+    user?: {
+        predict: {
+            el: number;
+            ev: number;
+        };
+        pts: number;
+    };
+}
+interface EventTeam {
+    name: string;
+    score: number;
+    flag: string;
+}
+const { penca_event } = Astro.props;
+---
+
+<div class="card intro-component-anim">
+    <div class="card-body d-flex flex-column col-12 px-0 pt-2 pb-0">
+        <!-- Header  -->
+        <div class="card-head d-flex flex-row justify-content-between px-2">
+            <small class="text-muted">{penca_event.location}</small>
+            <small class="text-muted">{penca_event.date}</small>
+        </div>
+        <!-- Cuerpo  -->
+        <div class="card-content d-flex flex-column mt-2 mb-0 px-2">
+            <div class="d-flex flex-row">
+                <div class="col-4 card-flag">
+                    <div
+                        class="team-flag rounded-3"
+                        style={"background: url("+penca_event.el.flag+");"}
+                    >
+                    </div>
+                </div>
+                <div class="col-4 card-score p-1">
+                    <div
+                        class="d-flex flex-row justify-content-between align-items-center h-100"
+                    >
+                        <h2 class="mb-0">1</h2>
+                        <h2 class="mb-0">-</h2>
+                        <h2 class="mb-0">2</h2>
+                    </div>
+                </div>
+                <div class="col-4 card-flag">
+                    <div
+                        class="team-flag rounded-3"
+                        style={"background: url("+penca_event.ev.flag+");"}
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pronosticos -->
+        <div
+            class="card-names d-flex flex-row text-center justify-content-between px-2 mb-1"
+        >
+            <div class="col-4">
+                <span>{penca_event.el.name}</span>
+            </div>
+            <div class="col-4">
+                <small class="text-muted">Pronóstico</small>
+                <span id="user-predict"
+                    >{penca_event.user.predict.el} - {
+                        penca_event.user.predict.ev
+                    }</span
+                >
+            </div>
+            <div class="col-4"><span>{penca_event.ev.name}</span></div>
+        </div>
+        <!-- Footer  -->
+        <div class="card-foot">
+            {
+                penca_event.isOpen && (
+                    <button class="button-foot m-0 bg-brand">
+                        <span class="text-white fw-regular">Ingresar</span>
+                    </button>
+                )
+            }
+            {
+                !penca_event.isOpen && (
+                    <button id="" class="button-foot m-0 bg-brand-secondary">
+                        <div class="col-12 d-flex justify-content-between fw-regular">
+                            <span>{penca_event.status}</span>
+                            <span>{penca_event.user.pts} pts</span>
+                        </div>
+                    </button>
+                )
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-muted{
+        color: var(--light-color) !important;
+        opacity: 0.5;
+    }
+    h2{
+        margin:0
+    }
+    .card {
+        width: 45%;
+        border-radius: 0.375rem;
+    }
+    .card * {
+        /* color: var(--light-color); */
+    }
+    .card-head {
+        font-size: 12px;
+    }
+    .card-content{
+        /* max-height: 80px; */
+    }
+    .card-flag {
+        min-height: 35px;
+        display: flex;
+    }
+    .team-flag {
+        min-height: inherit;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        filter: saturate(0.8);
+        border: 1px solid lightgray;
+        width: 80%;
+        /* max-height: 80px; */
+        margin-inline: auto;
+    }
+    .card-score h2 {
+        font-size: clamp(24px, 10vw, 50px);
+        font-weight: bold;
+    }
+    .card-score .edit_input {
+        text-align: center;
+        max-width: 20px;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .card-names {
+        margin-top: -5px;
+    }
+    .card-names span {
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .card-names small {
+        font-size: 10px;
+    }
+    .card-names #user-predict {
+        font-weight: 600;
+        font-size: 14px;
+        display: block;
+        margin-top: -5px;
+    }
+    .card-foot {
+        border-radius: 0 0 0.375rem 0.375rem ;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .card-foot span {
+        text-transform: capitalize;
+    }
+    .card-foot .button-foot {
+        width: 100%;
+        height: 35px;
+        border-radius: inherit;
+        border: none;
+        padding-inline: 15px;
+
+
+    }
+    .card {
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .card {
+            background-color: #1e1e1e;
+        }
+    }
+</style>
