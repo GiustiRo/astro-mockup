@@ -4,4 +4,4 @@ It has minimun tweaks regarding the almost 100/100 Lighthouse score, the default
 
 # Snap
 
-<img width="960" alt="image" src="https://user-images.githubusercontent.com/39607414/228944566-e71cab28-c7b4-4126-ba6b-8f12c4070920.png">
+![app-demo](https://user-images.githubusercontent.com/39607414/228947557-0a664983-f5c5-410a-87c9-4714596efe68.gif)
